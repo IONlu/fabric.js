@@ -1258,7 +1258,7 @@
           charIndex = -1, prevStyle = {}, stylesArray = [];
       //loop through each textLine
       for (var i = 0; i < textLines.length; i++) {
-        if (!styles[i]) {
+        if (!styles || !styles[i]) {
           //no styles exist for this line, so add the line's length to the charIndex total
           charIndex += textLines[i].length;
           continue;
