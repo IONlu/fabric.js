@@ -1881,7 +1881,7 @@ fabric.CommonMethods = {
           charIndex = -1, prevStyle = {}, stylesArray = [];
       //loop through each textLine
       for (var i = 0; i < textLines.length; i++) {
-        if (!styles[i]) {
+        if (!styles || !styles[i]) {
           //no styles exist for this line, so add the line's length to the charIndex total
           charIndex += textLines[i].length;
           continue;
@@ -1891,7 +1891,7 @@ fabric.CommonMethods = {
           charIndex++;
           var thisStyle = styles[i][c];
           //check if style exists for this character
-          if (thisStyle) {
+          if (thisStyle && Object.keys(thisStyle).length > 0) {
             var styleChanged = fabric.util.hasStyleChanged(prevStyle, thisStyle, true);
             if (styleChanged) {
               stylesArray.push({
